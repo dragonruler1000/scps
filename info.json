@@ -1,0 +1,9 @@
+{
+    "name": "scps",
+    "version": "0.1.0",
+    "title": "SCPs",
+    "author": "Minecraftchest2",
+    "factorio_version": "2.1",
+    "dependencies": ["base >=2.1"],
+    "description": "A mod that adds a few SCPs and the tools to contain them."
+}
