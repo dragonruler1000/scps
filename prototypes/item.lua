@@ -6,6 +6,7 @@ data:extend
         type = "item",
         name = "titanium-ore",
         icon = "__scps__/graphics/icons/scp-022-j_ore.png",
+        icon_size = 16,
         subgroup = "scp-resource",
         order = "a[titanium-ore]",
         inventory_move_sound = item_sounds.resource_inventory_move,
