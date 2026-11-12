@@ -47,8 +47,8 @@ local function resource(resource_parameters, autoplace_parameters)
                 height = 5,
                 width = 9,
                 spacing = 1,
-                frame_count = 5,
-                variation_count = 1,
+                frame_count = 1,
+                variation_count = 5,
                 scale = 0.5
             }
         },

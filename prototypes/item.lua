@@ -15,7 +15,7 @@ data:extend
         stack_size = 50,
         weight = 1 * kg
     },
-        {
+    {
         type = "item",
         name = "titanium-plate",
         icon = "__scps__/graphics/icons/scp-022-j_plate.png",
@@ -26,5 +26,18 @@ data:extend
         drop_sound = item_sounds.resource_inventory_move,
         stack_size = 50,
         weight = 1 * kg
+    },
+    {
+        type = "item",
+        name = "renforced-wall",
+        icon = "__base__/graphics/icons/wall.png",
+        subgroup = "scp-buildings",
+        order = "a[renforced-wall]",
+        inventory_move_sound = item_sounds.concrete_inventory_move,
+        pick_sound = item_sounds.concrete_inventory_pickup,
+        drop_sound = item_sounds.concrete_inventory_move,
+        place_result = "renforced-wall",
+        stack_size = 100
     }
+
 })
