@@ -35,14 +35,14 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe = "ti-wall"
-            },
+            }
         },
         prerequisites = { "military-2", "stone-wall" },
         unit = {
             count = 50,
             ingredients = {
                 { "automation-science-pack", 1 },
-                { "logistic-science-pack", 1 },
+                { "logistic-science-pack", 1 }
             },
             time = 30
         }
@@ -58,14 +58,14 @@ data:extend({
                 recipe = "good-fuel"
             }
         },
-        prerequisites = {"advanced-oil-processing"},
+        prerequisites = { "advanced-oil-processing" },
         unit = {
             count = 70,
             time = 30,
             ingredients = {
-                {"automation-science-pack", 1},
-                {"logistic-science-pack", 1},
-                {"chemical-science-pack", 1}
+                { "automation-science-pack", 1 },
+                { "logistic-science-pack", 1 },
+                { "chemical-science-pack", 1 }
             }
         }
     }

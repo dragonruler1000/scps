@@ -71,6 +71,6 @@ data:extend
                 amount = 6
             }
         },
-        results = {{type = "item", name = "goodfuel", amount = 1}}
+        results = {{type = "item", name = "good-fuel", amount = 1}}
     }
 })
