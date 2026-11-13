@@ -50,5 +50,33 @@ data:extend
         drop_sound = item_sounds.concrete_inventory_move,
         place_result = "renforced-gate",
         stack_size = 50
+    },
+    {
+        type = "item",
+        name = "ti-wall",
+        icon = "__base__/graphics/icons/wall.png",
+        subgroup = "scp-buildings",
+        order = "a[ti-wall]",
+        inventory_move_sound = item_sounds.concrete_inventory_move,
+        pick_sound = item_sounds.concrete_inventory_pickup,
+        drop_sound = item_sounds.concrete_inventory_move,
+        place_result = "ti-wall",
+        stack_size = 100
+    },
+    {
+        type = "item",
+        name = "goodfuel",
+        icon = "__base__/graphics/icons/rocket-fuel.png",
+        subgroup = "scp-item",
+        order = "a[goodfuel]",
+        fuel_categories = {"chemical"},
+        fuel_value = "100GJ",
+        fuel_acceleration_multiplier = 5,
+        fuel_top_speed_multiplier = 5,
+        inventory_move_sound = item_sounds.fuel_cell_inventory_move,
+        pick_sound = item_sounds.fuel_cell_inventory_pickup,
+        drop_sound = item_sounds.fuel_cell_inventory_move,
+        stack_size = 20,
+        weight = 10*kg
     }
 })

@@ -18,5 +18,11 @@ data:extend({
         name = "scp-buildings",
         group = "scp-items",
         order = "b"
+    },
+    {
+        type = "item-subgroup",
+        name = "scp-item",
+        group = "scp-items",
+        order = "c"
     }
 })

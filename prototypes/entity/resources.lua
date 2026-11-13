@@ -49,7 +49,7 @@ local function resource(resource_parameters, autoplace_parameters)
                 spacing = 1,
                 frame_count = 1,
                 variation_count = 5,
-                scale = 0.5
+                scale = 2.5
             }
         },
         map_color = resource_parameters.map_color,
