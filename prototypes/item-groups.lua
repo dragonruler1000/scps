@@ -1,6 +1,5 @@
-data:extend(
-    {
-        -- Adding a tab invintory to my mod so i can have all the added items togeather because i can
+data:extend({
+    -- Adding a tab invintory to my mod so i can have all the added items togeather because i can
     {
         type = "item-group",
         name = "scp-items",
@@ -20,5 +19,4 @@ data:extend(
         group = "scp-items",
         order = "b"
     }
-    }
-)
+})

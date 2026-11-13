@@ -61,16 +61,16 @@ end
 data:extend({
     resource({
         name = "titanium-ore",
-        order ="b",
-        map_color = {r=1, g=1, b=1, a=1},
-        mining_time = 2,
+        order = "b",
+        map_color = { r = 1, g = 1, b = 1, a = 1 },
+        mining_time = 2
     },
-    {
-        base_density = 30,
-        regular_rq_factor_multiplier = 1.10,
-        starting_rq_factor_multiplier = 1.5,
-        candidate_spot_count = 22
-    })
+        {
+            base_density = 30,
+            regular_rq_factor_multiplier = 1.10,
+            starting_rq_factor_multiplier = 1.5,
+            candidate_spot_count = 22
+        })
 })
 
 data.raw.planet.nauvis.map_gen_settings.autoplace_controls["titanium-ore"] = {}

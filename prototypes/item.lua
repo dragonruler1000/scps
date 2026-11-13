@@ -38,6 +38,17 @@ data:extend
         drop_sound = item_sounds.concrete_inventory_move,
         place_result = "renforced-wall",
         stack_size = 100
+    },
+    {
+        type = "item",
+        name = "renforced-gate",
+        icon = "__base__/graphics/icons/gate.png",
+        subgroup = "scp-buildings",
+        order = "a[renforced-gate]",
+        inventory_move_sound = item_sounds.concrete_inventory_move,
+        pick_sound = item_sounds.concrete_inventory_pickup,
+        drop_sound = item_sounds.concrete_inventory_move,
+        place_result = "renforced-gate",
+        stack_size = 50
     }
-
 })
