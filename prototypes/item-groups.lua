@@ -24,5 +24,18 @@ data:extend({
         name = "scp-item",
         group = "scp-items",
         order = "c"
+    },
+    {
+        type = "item-group",
+        name = "scp-enimies",
+        order = "i",
+        icon = "__scps__/graphics/icons/682.png",
+        icon_size = 15
+    },
+    {
+        type = "item-subgroup",
+        name = "scp-enemies",
+        group = "scp-enimies",
+        order = "a"
     }
 })

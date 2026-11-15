@@ -65,7 +65,7 @@ data:extend
     },
     {
         type = "item",
-        name = "good-fuel",
+        name = "good-Afuel",
         icon = "__base__/graphics/icons/rocket-fuel.png",
         subgroup = "scp-item",
         order = "a[goodfuel]",

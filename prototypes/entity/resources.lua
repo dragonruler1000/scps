@@ -1,6 +1,6 @@
 local resource_autoplace = require("resource-autoplace")
 
-resource_autoplace.initialize_patch_set("titanium-ore")
+resource_autoplace.initialize_patch_set("titanium-ore", false)
 
 local function resource(resource_parameters, autoplace_parameters)
     return {
