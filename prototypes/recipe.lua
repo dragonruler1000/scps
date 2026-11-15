@@ -59,7 +59,11 @@ data:extend
         energy_required = 2,
         categories = { "chemistry" },
         ingredients = {
-            { type = "fluid", name = "water", amount = 20 },
+            {
+                type = "fluid",
+                name = "water",
+                amount = 20
+            },
             {
                 type = "item",
                 name = "titanium-plate",
@@ -69,8 +73,13 @@ data:extend
                 type = "fluid",
                 name = "heavy-oil",
                 amount = 6
+            },
+            {
+                type = "item",
+                name = "682-flesh",
+                amount = 1
             }
         },
-        results = {{type = "item", name = "good-fuel", amount = 1}}
+        results = { { type = "item", name = "good-fuel", amount = 1 } }
     }
 })

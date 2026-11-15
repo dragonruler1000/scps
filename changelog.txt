@@ -1,0 +1,8 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 2026-11-14
+  Major Features:
+    - Added SCP-682
+    - Added a drop for 682
+  Minor Features:
+    - Added names for all the prototypes that didn't have them already

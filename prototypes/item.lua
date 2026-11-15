@@ -65,11 +65,11 @@ data:extend
     },
     {
         type = "item",
-        name = "good-Afuel",
+        name = "good-fuel",
         icon = "__base__/graphics/icons/rocket-fuel.png",
         subgroup = "scp-item",
         order = "a[goodfuel]",
-        fuel_categories = {"chemical"},
+        fuel_categories = { "chemical" },
         fuel_value = "100GJ",
         fuel_acceleration_multiplier = 5,
         fuel_top_speed_multiplier = 5,
@@ -77,6 +77,18 @@ data:extend
         pick_sound = item_sounds.fuel_cell_inventory_pickup,
         drop_sound = item_sounds.fuel_cell_inventory_move,
         stack_size = 20,
-        weight = 10*kg
+        weight = 10 * kg
+    },
+    {
+        type = "item",
+        name = "682-flesh",
+        icon = "__base__/graphics/icons/fish.png",
+        subgroup = "scp-item",
+        order = "b[682-flesh]",
+        stack_size = 20,
+        weight = 30 * kg,
+        inventory_move_sound = item_sounds.raw_fish_inventory_move,
+        pick_sound = item_sounds.raw_fish_inventory_pickup,
+        drop_sound = item_sounds.raw_fish_inventory_move
     }
 })

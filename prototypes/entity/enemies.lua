@@ -101,8 +101,8 @@ data:extend({
             }
         },
         healing_per_tick = 0.5,
-        collision_box = { { -0.4, -0.4 }, { 0.4, 0.4 } },
-        selection_box = { { -0.7, -1.5 }, { 0.7, 0.3 } },
+        collision_box = { { -2.5, -2.5 }, { 2.5, 2.5 } },
+        selection_box = { { -2.5, -2.5 }, { 2.5, 2.5 } },
         damaged_trigger_effect = hit_effects.biter(),
         steering = scp_steering(1.5, 3),
         attack_parameters = {
@@ -120,7 +120,7 @@ data:extend({
         vision_distance = 30,
         movement_speed = 1,
         distance_per_frame = 1,
-        absorptions_to_join_attack = { pollution = 10},
+        absorptions_to_join_attack = { pollution = 10 },
         distraction_cooldown = 100,
         min_pursue_time = 30 * 60,
         max_pursue_distance = 150,
@@ -132,6 +132,16 @@ data:extend({
         running_sound_animation_positions = { 2 },
         walking_sound = sounds.biter_walk(0, 0.3),
         ai_settings = scp_ai_settings(1),
-        water_reflection = scp_682_water_reflection(2)
+        water_reflection = scp_682_water_reflection(2),
+        loot = {
+            {
+                type = "item",
+                name = "682-flesh",
+                amount_min = 2,
+                amount_max = 10,
+                independent_probability = 1
+            }
+        },
+        random_corpse_variation = true
     }
 })
