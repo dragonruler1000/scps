@@ -14,7 +14,7 @@ data:extend({
                 recipe = "renforced-wall"
             }
         },
-        prerequisites = { "military-3", "gate" },
+        prerequisites = { "military-3", "gate", "ti-walls" },
         unit = {
             count = 100,
             ingredients = {

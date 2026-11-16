@@ -1,5 +1,7 @@
 require("__base__.prototypes.entity.enemy-constants")
 require("prototypes.entity.682-animations")
+require("prototypes.entity.enemy-constants")
+require("__base__.prototypes.entity.spawner-animation")
 
 local enemy_autoplace = require("__base__.prototypes.entity.enemy-autoplace-utils")
 local sounds = require("__base__.prototypes.entity.sounds")
@@ -113,7 +115,7 @@ data:extend({
             ammo_category = "melee",
             ammo_type = make_unit_melee_ammo_type(14),
             sound = sounds.biter_roars(0.35),
-            animation = scp_682_attack_animation(2, { 0.6, 0.58, 0.51, 1 }, { 0.62, 0.55, 0.2, 0.7 }),
+            animation = scp_682_attack_animation(2, scp_682_tint1, scp_682_tint2),
             range_mode = "bounding-box-to-bounding-box"
         },
         impact_category = "organic",
@@ -125,7 +127,7 @@ data:extend({
         min_pursue_time = 30 * 60,
         max_pursue_distance = 150,
         corpse = "behemoth-biter-corpse",
-        run_animation = scp_682_run_animation(2, { 0.6, 0.58, 0.51, 1 }, { 0.62, 0.55, 0.2, 0.7 }),
+        run_animation = scp_682_run_animation(2, scp_682_tint1, scp_682_tint2),
         dying_explosion = "behemoth-biter-die",
         dying_sound = sounds.biter_dying(0.5),
         working_sound = sounds.biter_calls(0.4, 0.75),
@@ -142,6 +144,232 @@ data:extend({
                 independent_probability = 1
             }
         },
-        random_corpse_variation = true
+        random_corpse_variation = true,
+        buildable_entities = { "portal" }
+    },
+    -- {
+    --     type = "unit-spawner",
+    --     name = "portal",
+    --     icon = "__scps__/graphics/icons/portal.png",
+    --     icon_size = 16,
+    --     map_color = { 0.859, 0.851, 0.082 },
+    --     flags = { "placeable-player", "placeable-enemy", "not-repairable" },
+    --     max_health = 350,
+    --     order = "b-d-a",
+    --     subgroup = "scp-enemies",
+    --     resistances = {
+    --         {
+    --             type = "physical",
+    --             decrease = 2,
+    --             percent = 15
+    --         },
+    --         {
+    --             type = "explosion",
+    --             decrease = 5
+    --         },
+    --         {
+    --             type = "fire",
+    --             decrease = 3,
+    --             percent = 60
+    --         }
+    --     },
+    --     working_sound = {
+    --         sound = {
+    --             category = "enemy",
+    --             filename = "__base__/sound/creatures/spawner.ogg",
+    --             volume = 0.6,
+    --             modifiers = volume_multiplier("main-menu", 0.7)
+    --         },
+    --         max_sounds_per_prototype = 3
+    --     },
+    --     dying_sound = {
+    --         variations = sound_variations(
+    --             "__base__/sound/creatures/spawner-death", 5, 0.7, volume_multiplier("main-menu", 0.55)
+    --         ),
+    --         aggregation = { max_count = 2, remove = true, count_already_playing = true }
+    --     },
+    --     healing_per_tick = 0.02,
+    --     collision_box = { { -2.2, -2.2 }, { 2.2, 2.2 } },
+    --     map_generator_bounding_box = { { -3.7, -3.2 }, { 3.7, 3.2 } },
+    --     selection_box = { { -2.5, -2.5 }, { 2.5, 2.5 } },
+    --     damaged_trigger_effect = hit_effects.biter(),
+    --     impact_category = "organic",
+    --     -- in ticks per 1 pu
+    --     absorptions_per_second = { pollution = { absolute = 20, proportional = 0.01 } },
+    --     corpse = "biter-spawner-corpse",
+    --     dying_explosion = "biter-spawner-die",
+    --     max_count_of_owned_units = 7,
+    --     max_friends_around_to_spawn = 5,
+    --     graphics_set = {
+    --         animations = {
+    --             spawner_idle_animation(0, portal_tint),
+    --             spawner_idle_animation(1, portal_tint),
+    --             spawner_idle_animation(2, portal_tint),
+    --             spawner_idle_animation(3, portal_tint)
+    --         }
+    --     },
+    --     result_units = (function ()
+    --         local res = {}
+    --         res[1] = { "682", { { 0.0, 0.3 }, { 0.6, 0.0 } } }
+    --         if not data.is_demo then
+    --             -- from evolution_factor 0.3 the weight for medium-biter is linearly rising from 0 to 0.3
+    --             -- this means for example that when the evolution_factor is 0.45 the probability of spawning
+    --             -- a small biter is 66% while probability for medium biter is 33%.
+    --             res[2] = { "medium-biter", { { 0.2, 0.0 }, { 0.6, 0.3 }, { 0.7, 0.1 } } }
+    --             -- for evolution factor of 1 the spawning probabilities are: small-biter 0%, medium-biter 1/8, big-biter 4/8, behemoth biter 3/8
+    --             res[3] = { "big-biter", { { 0.5, 0.0 }, { 1.0, 0.4 } } }
+    --             res[4] = { "behemoth-biter", { { 0.9, 0.0 }, { 1.0, 0.3 } } }
+    --         end
+    --         return res
+    --     end)(),
+    --     -- With zero evolution the spawn rate is 6 seconds, with max evolution it is 2.5 seconds
+    --     spawning_cooldown = { 360, 150 },
+    --     spawning_radius = spawn_range,
+    --     spawning_spacing = spawn_precision,
+    --     max_spawn_shift = 0,
+    --     max_richness_for_spawn_shift = 100,
+    --     autoplace = enemy_autoplace.enemy_spawner_autoplace("enemy_autoplace_base(0, 6)}"),
+    --     call_for_help_radius = 50,
+    --     time_to_capture = 60 * 20,
+    --     spawn_blocked_trigger = spawn_blocked_trigger
+    -- },
+    {
+        type = "unit-spawner",
+        name = "portal",
+        icon = "__scps__/graphics/icons/portal.png",
+        icon_size = 16,
+        flags = { "placeable-player", "placeable-enemy", "not-repairable" },
+        max_health = 350,
+        order = "b-d-a",
+        subgroup = "enemies",
+        map_color = {0.859, 0.851, 0.082},
+        resistances = {
+            {
+                type = "physical",
+                decrease = 2,
+                percent = 15
+            },
+            {
+                type = "explosion",
+                decrease = 5
+            },
+            {
+                type = "fire",
+                decrease = 3,
+                percent = 60
+            }
+        },
+        working_sound = {
+            sound = {
+                category = "enemy",
+                filename = "__base__/sound/creatures/spawner.ogg",
+                volume = 0.6,
+                modifiers = volume_multiplier("main-menu", 0.7)
+            },
+            max_sounds_per_prototype = 3
+        },
+        dying_sound = {
+            variations = sound_variations(
+                "__base__/sound/creatures/spawner-death", 5, 0.7, volume_multiplier("main-menu", 0.55)
+            ),
+            aggregation = { max_count = 2, remove = true, count_already_playing = true }
+        },
+        healing_per_tick = 0.02,
+        collision_box = { { -2.2, -2.2 }, { 2.2, 2.2 } },
+        map_generator_bounding_box = { { -3.7, -3.2 }, { 3.7, 3.2 } },
+        selection_box = { { -2.5, -2.5 }, { 2.5, 2.5 } },
+        damaged_trigger_effect = hit_effects.biter(),
+        impact_category = "organic",
+        -- in ticks per 1 pu
+        absorptions_per_second = { pollution = { absolute = 20, proportional = 0.01 } },
+        corpse = "biter-spawner-corpse",
+        dying_explosion = "biter-spawner-die",
+        max_count_of_owned_units = 7,
+        max_friends_around_to_spawn = 5,
+        graphics_set = {
+            animations = {
+                spawner_idle_animation(0, portal_tint),
+                spawner_idle_animation(1, portal_tint),
+                spawner_idle_animation(2, portal_tint),
+                spawner_idle_animation(3, portal_tint)
+            }
+        },
+        result_units = (function ()
+            local res = {}
+            res[1] = { "small-biter", { { 0.0, 0.3 }, { 0.6, 0.0 } } }
+            if not data.is_demo then
+                -- from evolution_factor 0.3 the weight for medium-biter is linearly rising from 0 to 0.3
+                -- this means for example that when the evolution_factor is 0.45 the probability of spawning
+                -- a small biter is 66% while probability for medium biter is 33%.
+                res[2] = { "medium-biter", { { 0.2, 0.0 }, { 0.6, 0.3 }, { 0.7, 0.1 } } }
+                -- for evolution factor of 1 the spawning probabilities are: small-biter 0%, medium-biter 1/8, big-biter 4/8, behemoth biter 3/8
+                res[3] = { "big-biter", { { 0.5, 0.0 }, { 1.0, 0.4 } } }
+                res[4] = { "behemoth-biter", { { 0.9, 0.0 }, { 1.0, 0.3 } } }
+            end
+            return res
+        end)(),
+        -- With zero evolution the spawn rate is 6 seconds, with max evolution it is 2.5 seconds
+        spawning_cooldown = { 360, 150 },
+        spawning_radius = spawn_range,
+        spawning_spacing = spawn_precision,
+        max_spawn_shift = 0,
+        max_richness_for_spawn_shift = 100,
+        autoplace = enemy_autoplace.enemy_spawner_autoplace("enemy_autoplace_portal(0, 6)"),
+        call_for_help_radius = 50,
+        time_to_capture = 60 * 20,
+        spawn_blocked_trigger = spawn_blocked_trigger,
+        spawn_decorations_on_expansion = true,
+        spawn_decoration = {
+            {
+                decorative = "light-mud-decal",
+                spawn_min = 0,
+                spawn_max = 2,
+                spawn_min_radius = 2,
+                spawn_max_radius = 5
+            },
+            {
+                decorative = "dark-mud-decal",
+                spawn_min = 0,
+                spawn_max = 3,
+                spawn_min_radius = 2,
+                spawn_max_radius = 6
+            },
+            {
+                decorative = "enemy-decal",
+                spawn_min = 3,
+                spawn_max = 5,
+                spawn_min_radius = 2,
+                spawn_max_radius = 7
+            },
+            {
+                decorative = "enemy-decal-transparent",
+                spawn_min = 4,
+                spawn_max = 20,
+                spawn_min_radius = 2,
+                spawn_max_radius = 14,
+                radius_curve = 0.9
+            },
+            {
+                decorative = "muddy-stump",
+                spawn_min = 2,
+                spawn_max = 5,
+                spawn_min_radius = 3,
+                spawn_max_radius = 6
+            },
+            {
+                decorative = "red-croton",
+                spawn_min = 2,
+                spawn_max = 8,
+                spawn_min_radius = 3,
+                spawn_max_radius = 6
+            },
+            {
+                decorative = "red-pita",
+                spawn_min = 1,
+                spawn_max = 5,
+                spawn_min_radius = 3,
+                spawn_max_radius = 6
+            }
+        }
     }
 })
