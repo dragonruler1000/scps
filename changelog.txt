@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+Date: 2026-11-15
+  Major Features:
+    - Added a spawner for 682
+  Minor Features:
+    - Made titanium walls a required tech for renforced walls
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 2026-11-14
   Major Features:
